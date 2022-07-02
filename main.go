@@ -14,8 +14,6 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/jung-kurt/gofpdf"
-	"github.com/jung-kurt/gofpdf/contrib/gofpdi"
 	"github.com/liyue201/goqr"
 
 	"github.com/karmdip-mi/go-fitz"
@@ -23,7 +21,7 @@ import (
 
 func convertPdf2Image() string {
 	var fileName string
-	files := []string{"qr.pdf"}
+	files := []string{"out.pdf"}
 
 	for _, file := range files {
 		doc, err := fitz.New(file)
@@ -85,26 +83,14 @@ func readImageQrCode(path string) {
 	return
 }
 
-func mergePdf() {
-	pdf := gofpdf.New("P", "mm", "A4", "")
-
-	tp := gofpdi.ImportPage(pdf, "qr.pdf", 1, "/MediaBox")
-	pdf.AddPage()
-	gofpdi.UseImportedTemplate(pdf, tp, 20, 50, 150, 0)
-
-	tp2 := gofpdi.ImportPage(pdf, "qr.pdf", 1, "/MediaBox")
-	pdf.AddPage()
-	gofpdi.UseImportedTemplate(pdf, tp2, 20, 50, 150, 0)
-	// pdf.AddPage()
-	// pdf.SetFont("Arial", "B", 16)
-	// pdf.Cell(40, 10, "Hello, world")
-	pdf.OutputFileAndClose("hello.pdf")
-}
-
 func main() {
 	// readImageQrCode("qr.png")
-	// readImageQrCode(fmt.Sprintf("img/qr/%s", convertPdf2Image()))
+	// convertPdf2Image()
+	readImageQrCode("./img/out/image-00002.jpg")
 
-	// mergePdf()
+	// api.SplitFile("test.pdf", "./outDir", 1, nil)
+
+	// inFiles := []string{"qr.pdf", "test.pdf"}
+	// api.MergeCreateFile(inFiles, "out.pdf", nil)
 
 }
