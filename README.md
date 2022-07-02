@@ -1,1 +1,1 @@
-https://pkg.go.dev/maze.io/x/unipdf#section-readme
+https://github.com/pdfcpu/pdfcpu/blob/master/pkg/api/example_test.go
