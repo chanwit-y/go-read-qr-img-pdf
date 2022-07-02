@@ -14,6 +14,8 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/jung-kurt/gofpdf"
+	"github.com/jung-kurt/gofpdf/contrib/gofpdi"
 	"github.com/liyue201/goqr"
 
 	"github.com/karmdip-mi/go-fitz"
@@ -83,7 +85,25 @@ func readImageQrCode(path string) {
 	return
 }
 
+func mergePdf() {
+	pdf := gofpdf.New("P", "mm", "A4", "")
+
+	tp := gofpdi.ImportPage(pdf, "qr.pdf", 1, "/MediaBox")
+	pdf.AddPage()
+	gofpdi.UseImportedTemplate(pdf, tp, 20, 50, 150, 0)
+
+	tp2 := gofpdi.ImportPage(pdf, "qr.pdf", 1, "/MediaBox")
+	pdf.AddPage()
+	gofpdi.UseImportedTemplate(pdf, tp2, 20, 50, 150, 0)
+	// pdf.AddPage()
+	// pdf.SetFont("Arial", "B", 16)
+	// pdf.Cell(40, 10, "Hello, world")
+	pdf.OutputFileAndClose("hello.pdf")
+}
+
 func main() {
-	readImageQrCode("qr.png")
+	// readImageQrCode("qr.png")
 	// readImageQrCode(fmt.Sprintf("img/qr/%s", convertPdf2Image()))
+
+	mergePdf()
 }
