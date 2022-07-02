@@ -1,0 +1,1 @@
+https://pkg.go.dev/maze.io/x/unipdf#section-readme

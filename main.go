@@ -101,9 +101,10 @@ func mergePdf() {
 	pdf.OutputFileAndClose("hello.pdf")
 }
 
-func main() {
-	// readImageQrCode("qr.png")
-	// readImageQrCode(fmt.Sprintf("img/qr/%s", convertPdf2Image()))
+// func main() {
+// 	// readImageQrCode("qr.png")
+// 	// readImageQrCode(fmt.Sprintf("img/qr/%s", convertPdf2Image()))
 
-	mergePdf()
-}
+// 	// mergePdf()
+
+// }
