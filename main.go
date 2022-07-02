@@ -19,7 +19,7 @@ import (
 	"github.com/karmdip-mi/go-fitz"
 )
 
-func convertPdf2Image() string {
+func convertPdfToImage() string {
 	var fileName string
 	files := []string{"out.pdf"}
 
